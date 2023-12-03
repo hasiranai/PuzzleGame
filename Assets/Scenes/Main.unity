@@ -827,11 +827,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdaa4bbc60284e75b368a3ed614e7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  etoPlefab: {fileID: 4328751305547267636, guid: 45ed1f3b434674858a2c4394788d2170, type: 3}
+  etoPrefab: {fileID: 478188606541697634, guid: 45ed1f3b434674858a2c4394788d2170, type: 3}
   etoSetTran: {fileID: 449293095}
   maxRotateAngle: 35
   maxRange: 400
   fallPos: 1400
+  etoList: []
+  etoSprites: []
 --- !u!4 &1109406110
 Transform:
   m_ObjectHideFlags: 0
@@ -926,7 +928,7 @@ GameObject:
   - component: {fileID: 1710730226}
   - component: {fileID: 1710730225}
   m_Layer: 0
-  m_Name: Gamedata
+  m_Name: GameData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

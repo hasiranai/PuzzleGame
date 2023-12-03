@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 243702570911846209}
   - component: {fileID: 7125402574500304766}
   - component: {fileID: 3458520557023496475}
+  - component: {fileID: 478188606541697634}
   m_Layer: 5
   m_Name: EtoPrefab
   m_TagString: Untagged
@@ -140,3 +141,19 @@ CircleCollider2D:
   m_Offset: {x: -0.5875393, y: -1.3730546}
   serializedVersion: 2
   m_Radius: 93.495636
+--- !u!114 &478188606541697634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328751305547267636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398103ff9fda54228a3db2104645f632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  etoType: 0
+  imgEto: {fileID: 243702570911846209}
+  isSelected: 0
+  num: 0
