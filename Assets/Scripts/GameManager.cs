@@ -44,13 +44,13 @@ public class GameManager : MonoBehaviour
         etoSprites = new Sprite[(int)EtoType.Count];
 
         // Resources.LoadAllを行い、分割されている干支の画像を順番に全て読み込んで配列に代入
-        etoSprites = Resources.LoadAll<Sprite>("Sprites/eto");
+        //etoSprites = Resources.LoadAll<Sprite>("Sprites/eto");
 
         // ※ 1つのファイルを１２分割していない場合は、以下の処理を行います。12分割している場合には使用しません。
-        //for(int i = 0; i < etoSprites.Length; i++)
-        //{
-        //    etoSprites[i] = Resources.Load<Sprite>("Sprites/eto_" + i);
-        //}
+        for(int i = 0; i < etoSprites.Length; i++)
+        {
+            etoSprites[i] = Resources.Load<Sprite>("Sprites/eto_" + i);
+        }
 
         yield break;
     }
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
             // 生成された干支の初期設定(干支の種類と干支の画像を引数を使ってEtoへ渡す)
             eto.SetUpEto((EtoType)randomValue, etoSprites[randomValue]);
-
+           
             // etoListに追加
             etoList.Add(eto);
 
