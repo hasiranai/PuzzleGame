@@ -12,6 +12,15 @@ public class GameData : MonoBehaviour
     [Header("ゲーム開始時に生成する干支の数")]
     public int createEtoCount = 50;
 
+    [Header("現在のスコア")]
+    public int score = 0;
+
+    [Header("干支を消した際に加算されるスコア")]
+    public int etoPoint = 100;
+
+    [Header("消した干支の数")]
+    public int eraseEtoCount = 0;
+
     void Awake()
     {
         if (instance == null)
@@ -23,5 +32,18 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // ゲームの初期化
+        InitGame();
+    }
+
+    /// <summary>
+    /// ゲーム初期化
+    /// </summary>
+    private void InitGame()
+    {
+        score = 0;
+        eraseEtoCount = 0;
+        Debug.Log("Init Game");
     }
 }

@@ -359,7 +359,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 250, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378676587
 MonoBehaviour:
@@ -918,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -50
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1107,6 +1107,7 @@ MonoBehaviour:
   eraseEtoList: []
   linkCount: 0
   etoDistance: 1
+  uiManager: {fileID: 2086284248}
 --- !u!4 &1109406110
 Transform:
   m_ObjectHideFlags: 0
@@ -1227,7 +1228,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 950}
-  m_SizeDelta: {x: 1125, y: 367}
+  m_SizeDelta: {x: 1125, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1456058005
 MonoBehaviour:
@@ -1336,6 +1337,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   etoTypeCount: 5
   createEtoCount: 50
+  score: 0
+  etoPoint: 100
+  eraseEtoCount: 0
 --- !u!4 &1710730226
 Transform:
   m_ObjectHideFlags: 0
@@ -1399,8 +1403,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2086284247}
+  - component: {fileID: 2086284248}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1414,13 +1419,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086284246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48999542, y: 0.0898815, z: 0.21035752}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086284248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086284246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3737046da18f04ca69d8685f2a6bfd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtScore: {fileID: 4444427056389921858}
 --- !u!1001 &4444427056389921857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1499,7 +1517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1522,3 +1540,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08615fa9429c7412395353a7de460539, type: 3}
+--- !u!114 &4444427056389921858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 383778261545562549, guid: 08615fa9429c7412395353a7de460539, type: 3}
+  m_PrefabInstance: {fileID: 4444427056389921857}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
