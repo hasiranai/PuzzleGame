@@ -157,6 +157,9 @@ public class GameManager : MonoBehaviour
                 currentEtoType = dragEto.etoType;
 
                 // 干支の状態が「選択中」であると更新
+                dragEto.isSelected = true;
+
+                // 干支に何番目に選択されているのか、通し番号を登録
                 dragEto.num = linkCount;
 
                 // 削除する対象の干支を登録するリストを初期化
