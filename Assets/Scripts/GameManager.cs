@@ -46,11 +46,34 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIManager uiManager;
 
+    private float timer;       // 残り時間計測用
+
+
+
+    /// <summary>
+    /// ゲームの進行状況
+    /// </summary>
+    public enum GameState
+    {
+        Select,　　　 // 干支の選択中
+        Ready,　　　  // ゲームの準備中
+        Play,        // ゲームのプレイ中
+        Result       // リザルト中
+    }
+
+    [Header("現在のゲームの進行状況")]
+    public GameState gameState = GameState.Select;
 
     IEnumerator Start()　　// <= ⭐︎ 戻り値を void から IEnumerator型に変更して、コルーチンメソッドにする
     {
+        // gameStateを準備中に変更
+        gameState = GameState.Ready;
+
         // 干支の画像を読み込む。この処理が終了するまで、次の処理には行かないようにする
         yield return StartCoroutine(LoadEtoSprites());
+
+        // 残り時間の表示
+        uiManager.UpdateDisplayGameTime(GameData.instance.gameTime);
 
         // 引数で指定した数の干支を生成する
         StartCoroutine(CreateEtos(GameData.instance.createEtoCount));
@@ -106,10 +129,22 @@ public class GameManager : MonoBehaviour
             // 0.03秒待って次の干支を生成
             yield return new WaitForSeconds(0.03f);
         }
+
+        // gameStateが準備中の時だけゲームプレイ中に変更
+        if (gameState == GameState.Ready)
+        {
+            gameState = GameState.Play;
+        }
     }
 
     private void Update()
     {
+        // ゲームのプレイ中以外のgameStateでは処理を行わない
+        if (gameState != GameState.Play)
+        {
+            return;
+        }
+
         // 干支をつなげる処理
         if (Input.GetMouseButtonDown(0) && firstSelectEto == null)
         {
@@ -125,6 +160,32 @@ public class GameManager : MonoBehaviour
         {
             // 干支のドラッグ（スワイプ）中の処理
             OnDragging();
+        }
+
+        // ゲームの残り時間のカウント処理
+        timer += Time.deltaTime;
+
+        // timerが 1 以上になったら
+        if (timer >= 1)
+        {
+            // リセットして再度加算できるように
+            timer = 0;
+
+            // 残り時間をマイナス
+            GameData.instance.gameTime--;
+
+            // 残り時間がマイナスになったら
+            if (GameData.instance.gameTime <= 0)
+            {
+                // 0で止める
+                GameData.instance.gameTime = 0;
+
+                // ゲーム終了を追加する
+                StartCoroutine(GameUp());
+            }
+
+            // 残り時間の表示更新
+            uiManager.UpdateDisplayGameTime(GameData.instance.gameTime);
         }
     }
 
@@ -348,5 +409,19 @@ public class GameManager : MonoBehaviour
 
         // スコア加算と画面の更新処理
         uiManager.UpdateDisplayScore();
+    }
+
+    /// <summary>
+    /// ゲーム終了処理
+    /// </summary>
+    private IEnumerator GameUp()
+    {
+        // gameStateをリザルトに変更する = Updateメソッドが動かなくなる
+        gameState = GameState.Result;
+
+        yield return new WaitForSeconds(1.5f);
+
+        // TODO リザルトの処理を実装する
+        Debug.Log("リザルトのポップアップを移動させます");
     }
 }

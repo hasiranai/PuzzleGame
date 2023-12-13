@@ -21,6 +21,12 @@ public class GameData : MonoBehaviour
     [Header("消した干支の数")]
     public int eraseEtoCount = 0;
 
+    [SerializeField, Header("1回辺りのゲーム時間")]
+    private int initTime = 60;
+
+    [Header("現在のゲームの残り時間")]
+    public float gameTime;
+
     void Awake()
     {
         if (instance == null)
@@ -44,6 +50,10 @@ public class GameData : MonoBehaviour
     {
         score = 0;
         eraseEtoCount = 0;
+
+        // ゲーム時間を設定
+        gameTime = initTime;
+
         Debug.Log("Init Game");
     }
 }
