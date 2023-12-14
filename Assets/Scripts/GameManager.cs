@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;                    // ⭐︎ <= DOTween を利用するために必要になるため、追加します
 
 public class GameManager : MonoBehaviour
 {
@@ -48,7 +49,8 @@ public class GameManager : MonoBehaviour
 
     private float timer;       // 残り時間計測用
 
-
+    [SerializeField]
+    private GameObject resultPopUp;
 
     /// <summary>
     /// ゲームの進行状況
@@ -421,7 +423,25 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        // TODO リザルトの処理を実装する
-        Debug.Log("リザルトのポップアップを移動させます");
+        // リザルトの処理を実装する
+        yield return StartCoroutine(MoveResultPopUp());
+    }
+
+    /// <summary>
+    /// リザルトポップアップを画面内に移動
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator MoveResultPopUp()
+    {
+        // DOTweenの機能を使って、ResultPopUpゲームオブジェクトを画面外から画面内に移動させる
+        resultPopUp.transform.DOMoveY(0, 1.0f).SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                // TODO 移動完了後に、リザルト内容を表示
+                Debug.Log("リザルト内容を表示します");
+            }
+            );
+
+        yield return new WaitForSeconds(1.0f);
     }
 }
