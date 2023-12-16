@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
     private float timer;       // 残り時間計測用
 
     [SerializeField]
-    private GameObject resultPopUp;
-
+    private ResultPopUp resultPopUp;    // 型を GameObject から ResiltPopUp に変更する
+ 
     /// <summary>
     /// ゲームの進行状況
     /// </summary>
@@ -437,8 +437,8 @@ public class GameManager : MonoBehaviour
         resultPopUp.transform.DOMoveY(0, 1.0f).SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                // TODO 移動完了後に、リザルト内容を表示
-                Debug.Log("リザルト内容を表示します");
+                // 移動完了後に、リザルト内容を表示
+                resultPopUp.DisplayResult(GameData.instance.score, GameData.instance.eraseEtoCount);
             }
             );
 
