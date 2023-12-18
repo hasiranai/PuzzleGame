@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,27 @@ public class GameData : MonoBehaviour
 
     [Header("現在のゲームの残り時間")]
     public float gameTime;
+
+
+    /// <summary>
+    /// 干支の基本情報
+    /// </summary>
+    [System.Serializable]
+    public class EtoData
+    {
+        public EtoType etoType;
+        public Sprite sprite;
+
+        // コンストラクタ(インスタンス(new)時に用意している引数への値の代入を強制するメソッド)
+        public EtoData(EtoType etoType, Sprite sprite)
+        {
+            this.etoType = etoType;
+            this.sprite = sprite;
+        }
+    }
+
+    [Header("干支12種類のリスト")]
+    public List<EtoData> etoDataList = new List<EtoData>();
 
     void Awake()
     {
@@ -71,5 +93,34 @@ public class GameData : MonoBehaviour
 
         // 初期化 GameDataゲームオブジェクトはシーン遷移しても破棄されない設定になっていますので、ここで再度、初期化の処理を行う必要があります。
         InitGame();
+    }
+
+    /// <summary>
+    /// 干支データのリストを作成
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator InitEtoDataList()
+    {
+        // 干支の画像を読み込むための変数を配列で用意
+        Sprite[] etoSprites = new Sprite[(int)EtoType.Count];
+
+        // Resources.LoadAllを行い、分割されている干支の画像を順番にすべて読み込んで配列に代入
+        Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Sprites/eto");
+
+        // 配列のコピー
+        int copyLength = Mathf.Min((int)EtoType.Count, loadedSprites.Length);
+        Array.Copy(loadedSprites, etoSprites, copyLength);
+
+        // ゲームに登場する12種類の干支データを作成
+        for (int i = 0; i < (int)EtoType.Count; i++)
+        {
+            // 干支の情報を扱うクラス EtoData をインスタンス(new EtoData())し、コンストラクタを使って代入
+            EtoData etoData = new EtoData((EtoType)i, etoSprites[i]);
+
+            // 干支データをListへ追加
+            etoDataList.Add(etoData);
+        }
+
+        yield break;
     }
 }
