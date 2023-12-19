@@ -2563,7 +2563,31 @@ MonoBehaviour:
   eraseEtoCount: 0
   initTime: 60
   gameTime: 0
-  etoDataList: []
+  etoDataList:
+  - etoType: 0
+    sprite: {fileID: 21300000, guid: c7890745748454851aa2d7de0ed5ef9a, type: 3}
+  - etoType: 1
+    sprite: {fileID: 21300000, guid: 134e72792a1b44899814cad80d00fc94, type: 3}
+  - etoType: 2
+    sprite: {fileID: 21300000, guid: 2150c2aac219e4d3b90d4bf6cff4e2a2, type: 3}
+  - etoType: 3
+    sprite: {fileID: 21300000, guid: 372189221a24a44199860f4919b45131, type: 3}
+  - etoType: 4
+    sprite: {fileID: 21300000, guid: bb298a539ec7b49c9ac67691dbe39868, type: 3}
+  - etoType: 5
+    sprite: {fileID: 21300000, guid: d7787147d10374793889b5d2338d1960, type: 3}
+  - etoType: 6
+    sprite: {fileID: 21300000, guid: 2509b530c11d046b383783316e60beee, type: 3}
+  - etoType: 7
+    sprite: {fileID: 21300000, guid: 587df4dd24d0b452d8c5bbaa69a971dc, type: 3}
+  - etoType: 8
+    sprite: {fileID: 21300000, guid: cbb94c1fd02ad42b286e13aae07e5ed9, type: 3}
+  - etoType: 9
+    sprite: {fileID: 21300000, guid: e84d0b8dc08a54026a10d8f523c36ac3, type: 3}
+  - etoType: 10
+    sprite: {fileID: 21300000, guid: 5c5703e21080449909dc5baee6034e79, type: 3}
+  - etoType: 11
+    sprite: {fileID: 21300000, guid: 670285aacd44c4fdd8f5ceb27b01e1d7, type: 3}
 --- !u!4 &1710730226
 Transform:
   m_ObjectHideFlags: 0
