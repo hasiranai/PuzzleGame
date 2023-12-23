@@ -16,6 +16,12 @@ public class Shuffle : MonoBehaviour
 
     private UIManager uiManager;
 
+    void Start()
+    {
+        uiManager = new UIManager();  // または他の方法でインスタンスを取得
+        StartCoroutine(uiManager.Initialize());
+    }
+
     /// <summary>
     /// シャッフルの初期設定
     /// </summary>
