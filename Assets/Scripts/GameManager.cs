@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
         // gameStateを準備中に変更
         gameState = GameState.Ready;
 
+        // UIManagerの初期設定
+        yield return StartCoroutine(uiManager.Initialize());
+
         // 干支データのリストが作成されてなければ
         if (GameData.instance.etoDataList.Count == 0)
         {
@@ -124,6 +127,9 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CreateEtos(int generateCount)
     {
+        // 干支の生成中はシャッフルボタンを押せないようにする
+        uiManager.ActivateShuffleButton(false);
+
         for (int i = 0; i < generateCount; i++)
         {
             // 干支プレファブのクローンを、干支の生成位置に生成
@@ -147,6 +153,9 @@ public class GameManager : MonoBehaviour
             // 0.03秒待って次の干支を生成
             yield return new WaitForSeconds(0.03f);
         }
+
+        // 干支の生成が終了したらシャッフルボタンを押せるようにする
+        uiManager.ActivateShuffleButton(true);
 
         // gameStateが準備中の時だけゲームプレイ中に変更
         if (gameState == GameState.Ready)
@@ -434,6 +443,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator GameUp()
     {
+        // シャッフルボタンを非活性化して押せなくする
+        uiManager.ActivateShuffleButton(false);
+
         // gameStateをリザルトに変更する = Updateメソッドが動かなくなる
         gameState = GameState.Result;
 

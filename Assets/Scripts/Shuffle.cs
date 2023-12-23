@@ -20,10 +20,13 @@ public class Shuffle : MonoBehaviour
     /// シャッフルの初期設定
     /// </summary>
     /// <param name="uiManager"></param>
-    private void SetUpShuffle(UIManager uiManager)
+    public void SetUpShuffle(UIManager uiManager)
     {
         this.uiManager = uiManager;
 
+        capsuleCol = GetComponent<CapsuleCollider2D>();
+
+        // シャッフル用のコライダーをオフにしておく
         capsuleCol.enabled = false;
     }
 
@@ -56,7 +59,7 @@ public class Shuffle : MonoBehaviour
         capsuleCol.enabled = false;
 
         // 再度シャッフルボタンを押せるようにする
-        //uiManager.ActivateShuffleButton(true);  //コメントアウト
+        uiManager.ActivateShuffleButton(true);  //コメントアウト
     }
 
     /// <summary>
@@ -83,10 +86,10 @@ public class Shuffle : MonoBehaviour
         shuffleTimer -= Time.deltaTime;
 
         // shuffleTimerが0になり、かつコライダーがオンの場合には
-       // if (shuffleTimer <= 0 && capsuleCol.enabled)
+        if (shuffleTimer <= 0 && capsuleCol.enabled)
         {
             // シャッフル停止
-        //    StopShuffle();
+            StopShuffle();
         }
     }
 }
