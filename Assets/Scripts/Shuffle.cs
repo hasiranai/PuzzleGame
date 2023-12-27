@@ -18,8 +18,8 @@ public class Shuffle : MonoBehaviour
 
     void Start()
     {
-        uiManager = new UIManager();  // または他の方法でインスタンスを取得
-        StartCoroutine(uiManager.Initialize());
+      //  uiManager = new UIManager();  // または他の方法でインスタンスを取得
+      //  StartCoroutine(uiManager.Initialize());
     }
 
     /// <summary>
