@@ -2153,6 +2153,7 @@ MonoBehaviour:
   etoDistance: 1
   uiManager: {fileID: 2086284248}
   resultPopUp: {fileID: 1446790487}
+  eraseEffectPrefab: {fileID: 4840866738940267707, guid: 8054b2abf7c1f45babb788eee315fd7e, type: 3}
   gameState: 0
 --- !u!4 &1109406110
 Transform:

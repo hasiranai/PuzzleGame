@@ -51,7 +51,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private ResultPopUp resultPopUp;    // 型を GameObject から ResiltPopUp に変更する
- 
+
+    [SerializeField, Header("干支削除演出エフェクトのプレファブ")]
+    private GameObject eraseEffectPrefab;
+
     /// <summary>
     /// ゲームの進行状況
     /// </summary>
@@ -342,6 +345,12 @@ public class GameManager : MonoBehaviour
             {
                 // 干支リストから取り除く
                 etoList.Remove(eraseEtoList[i]);
+
+                // 干支の削除演出エフェクト生成
+                GameObject effect = Instantiate(eraseEffectPrefab, eraseEtoList[i].gameObject.transform);
+
+                // エフェクトの位置をEtoSetTran内に変更(干支の子オブジェクトのままだと、干支が破棄されると同時にエフェクトも破棄されてしまうため)
+                effect.transform.SetParent(etoSetTran);
 
                 // 干支を削除
                 Destroy(eraseEtoList[i].gameObject);
