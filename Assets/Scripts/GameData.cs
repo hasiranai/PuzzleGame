@@ -29,6 +29,12 @@ public class GameData : MonoBehaviour
     [Header("現在のゲームの残り時間")]
     public float gameTime;
 
+    [Header("選択している干支")]
+    public EtoData selectedEtoData;
+
+    [Header("選択している干支を消した時のスコア倍率")]
+    public float etoRate = 3;
+
 
     /// <summary>
     /// 干支の基本情報
@@ -61,9 +67,6 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        // ゲームの初期化
-        InitGame();
     }
 
     /// <summary>
@@ -90,9 +93,6 @@ public class GameData : MonoBehaviour
 
         // 現在のゲームシーンを取得し、シーンの名前を使ってLoadScene処理を行う(再度、同じゲームシーンを呼び出す)
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        // 初期化 GameDataゲームオブジェクトはシーン遷移しても破棄されない設定になっていますので、ここで再度、初期化の処理を行う必要があります。
-        InitGame();
     }
 
     /// <summary>

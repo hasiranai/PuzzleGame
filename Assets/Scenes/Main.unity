@@ -3165,6 +3165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557465843}
   - component: {fileID: 1557465844}
+  - component: {fileID: 1557465845}
   m_Layer: 5
   m_Name: EtoSelectPopUp
   m_TagString: Untagged
@@ -3207,6 +3208,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1557465845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557465842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2403580ba76d40a4974b2fb21e9f118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1583939993
 GameObject:
   m_ObjectHideFlags: 0
