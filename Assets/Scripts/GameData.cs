@@ -72,7 +72,7 @@ public class GameData : MonoBehaviour
     /// <summary>
     /// ゲーム初期化
     /// </summary>
-    private void InitGame()
+    public void InitGame()
     {
         score = 0;
         eraseEtoCount = 0;

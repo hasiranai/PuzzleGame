@@ -35,20 +35,20 @@ public class EtoSelectPopUp : MonoBehaviour
         for (int i = 0; i < (int)EtoType.Count; i++)
         {
             // 干支ボタンを生成
-            EtoButton etoButton = Instantiate(etoButtonPrefab, etoButtonTran, false);
+          //  EtoButton etoButton = Instantiate(etoButtonPrefab, etoButtonTran, false);
 
             // 干支ボタンの初期設定
-            etoButton.SetUpEtoButton(this, GameData.instance.etoDataList[i]);
+          //  etoButton.SetUpEtoButton(this, GameData.instance.etoDataList[i]);
 
             if (i == 0)
             {
                 // 初期は干支の子(ね)を選択している状態にする
-                etoButton.imgEto.Color = new Color(0.65f, 0.65f, 0.65f);
+         //       etoButton.imgEto.Color = new Color(0.65f, 0.65f, 0.65f);
                 GameData.instance.selectedEtoData = GameData.instance.etoDataList[i];
             }
 
             // 干支ボタンをListへ追加
-            etoButtonList.Add(etoButton);
+         //   etoButtonList.Add(etoButton);
 
             yield return new WaitForSeconds(0.15f);
         }
@@ -89,18 +89,18 @@ public class EtoSelectPopUp : MonoBehaviour
     /// <param name="waitTime"></param>
     public void ChangeColerToEtoButton(EtoType etoType)
     {
-        for (int i = 0; i < etoButtonList.Count; i++)
+//        for (int i = 0; i < etoButtonList.Count; i++)
         {
             // 干支ボタンの色を選択中か、選択中でないかで変更
-            if (etoButtonList[i].etoData.Etotype == etoType)
-            {
+     //       if (etoButtonList[i].etoData.Etotype == etoType)
+     //       {
                 // 選択中の色に変更(灰色)
-                etoButtonList[i].imgEto.color = new Color(0.65f, 0.65f, 0.65f);
-            }
-            else
+    //            etoButtonList[i].imgEto.color = new Color(0.65f, 0.65f, 0.65f);
+      //      }
+      //      else
             {
                 // 通常の色に変更
-                etoButtonList[i].imgEto.color = new Color(1f, 1f, 1f);
+     //           etoButtonList[i].imgEto.color = new Color(1f, 1f, 1f);
             }
         }
     }

@@ -2458,6 +2458,7 @@ MonoBehaviour:
   uiManager: {fileID: 2086284248}
   resultPopUp: {fileID: 1446790487}
   eraseEffectPrefab: {fileID: 4840866738940267707, guid: 8054b2abf7c1f45babb788eee315fd7e, type: 3}
+  etoSelectPopUp: {fileID: 0}
   gameState: 0
 --- !u!4 &1109406110
 Transform:
@@ -3220,6 +3221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2403580ba76d40a4974b2fb21e9f118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  etoButtonTran: {fileID: 275164841}
+  btnStart: {fileID: 1160900155}
+  canvasGroup: {fileID: 1557465844}
 --- !u!1 &1583939993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,6 +3298,10 @@ MonoBehaviour:
   eraseEtoCount: 0
   initTime: 60
   gameTime: 0
+  selectedEtoData:
+    etoType: 0
+    sprite: {fileID: 0}
+  etoRate: 3
   etoDataList:
   - etoType: 0
     sprite: {fileID: 21300000, guid: c7890745748454851aa2d7de0ed5ef9a, type: 3}
