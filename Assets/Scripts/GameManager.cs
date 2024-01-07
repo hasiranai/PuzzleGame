@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         // 干支の選択ポップアップに干支選択ボタンを生成。この処理が終了するまで、次の処理へは行かないようにする
         yield return StartCoroutine(etoSelectPopUp.CreateEtoButtons(this));
-
+     
     }
 
     /// <summary>
@@ -123,8 +123,19 @@ public class GameManager : MonoBehaviour
         // 新しくリストを用意して初期化に合わせてetoDataListを複製して、干支の候補リストとする
         List<GameData.EtoData> candidateEtoDataList = new List<GameData.EtoData>(GameData.instance.etoDataList);
 
+     //   foreach (GameData.EtoData etoData in candidateEtoDataList)
+     //   {
+     //       if (etoData.etoType == GameData.instance.selectedEtoData.etoType)
+     //       {
+     //           selectedEtoDataList.Add(etoData);
+     //           candidateEtoDataList.Remove(etoData);
+     //       }
+     //   }
+
+
         // 選択中の干支を探して生成する干支のリストに追加
-        GameData.EtoData myEto = candidateEtoDataList.Find((x) => x.etoType == GameData.instance.selectedEtoData.etoType);
+        GameData.EtoData myEto = candidateEtoDataList.
+            Find((etodata) => etodata.etoType == GameData.instance.selectedEtoData.etoType);
         selectedEtoDataList.Add(myEto);
         candidateEtoDataList.Remove(myEto);
         typeCount--;
