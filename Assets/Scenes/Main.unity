@@ -995,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 383778261545562549, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_FontData.m_Alignment
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 436841480446494255, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_Name
@@ -1067,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3225,7 +3225,6 @@ MonoBehaviour:
   etoButtonTran: {fileID: 275164841}
   btnStart: {fileID: 1160900155}
   canvasGroup: {fileID: 1557465844}
-  gameManager: {fileID: 1109406109}
 --- !u!1 &1583939993
 GameObject:
   m_ObjectHideFlags: 0

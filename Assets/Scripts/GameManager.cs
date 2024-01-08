@@ -476,11 +476,26 @@ public class GameManager : MonoBehaviour
         // スコアを加算(EtoPoint * 消した数)
         GameData.instance.score += GameData.instance.etoPoint * count;
 
+        // 消した干支が選択されている干支かどうかを判定する変数。trueなら選択されている干支とする
+        bool isChooseEto = false;
+
+        if (etoType == GameData.instance.selectedEtoData.etoType)
+        {
+            // 選択している干支の場合にはスコアを多く加算　etoPoint * 消した干支の数 * etoRate
+            GameData.instance.score += Mathf.CeilToInt(GameData.instance.etoPoint * count * GameData.instance.etoRate);
+            isChooseEto = true;
+        }
+        else
+        {
+            // それ以外は etoPoint * 消した干支の数　を加算
+            GameData.instance.score += GameData.instance.etoPoint * count;
+        }
+
         // 消した干支の数を加算
         GameData.instance.eraseEtoCount += count;
 
         // スコア加算と画面の更新処理
-        uiManager.UpdateDisplayScore();
+        uiManager.UpdateDisplayScore(isChooseEto);     // <= ⭐︎ 引数を追加します
     }
 
     /// <summary>
