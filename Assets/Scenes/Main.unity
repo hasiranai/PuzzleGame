@@ -3799,6 +3799,8 @@ MonoBehaviour:
   txtTimer: {fileID: 907618904}
   shuffle: {fileID: 793962273}
   btnShuffle: {fileID: 51862599}
+  btnSkill: {fileID: 419828699}
+  imgSkillPoint: {fileID: 1886650836}
 --- !u!114 &2107671904 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 383778261545562549, guid: 08615fa9429c7412395353a7de460539, type: 3}
