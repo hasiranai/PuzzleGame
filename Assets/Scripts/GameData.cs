@@ -35,6 +35,9 @@ public class GameData : MonoBehaviour
     [Header("選択している干支を消した時のスコア倍率")]
     public float etoRate = 3;
 
+    [Header("選択中のスキル")]
+    public SkillType selectedSkillType;
+
 
     /// <summary>
     /// 干支の基本情報

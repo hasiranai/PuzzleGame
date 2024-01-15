@@ -3295,7 +3295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1557465843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3425,6 +3425,7 @@ MonoBehaviour:
     etoType: 0
     sprite: {fileID: 0}
   etoRate: 3
+  selectedSkillType: 0
   etoDataList:
   - etoType: 0
     sprite: {fileID: 21300000, guid: c7890745748454851aa2d7de0ed5ef9a, type: 3}

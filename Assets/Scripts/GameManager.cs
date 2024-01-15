@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;                    // ⭐︎ <= DOTween を利用するために必要になるため、追加します
+using System.Linq;                    // ⭐︎ <= 追加します
+using UnityEngine.Events;             // ⭐︎ <= 追加します
 
 public class GameManager : MonoBehaviour
 {
@@ -108,6 +110,9 @@ public class GameManager : MonoBehaviour
 
         // ゲームに登場させる干支の種類を設定する
         yield return StartCoroutine(SetUpEtoTypes(GameData.instance.etoTypeCount));
+
+        // GameDataのselectedSkillTypeを渡して、スキルボタンに登録するメソッド(スキル実行時の処理)を設定
+        yield return StartCoroutine(SetUpSkill(GameData.instance.selectedSkillType));
 
         // 引数で指定した数の干支を生成する
         StartCoroutine(CreateEtos(GameData.instance.createEtoCount));
@@ -395,6 +400,9 @@ public class GameManager : MonoBehaviour
             // スコアと消した干支の数の加算
             AddScores(currentEtoType, eraseEtoList.Count);
 
+            // スキルポイント加算
+            uiManager.AddSkillPoint(eraseEtoList.Count);
+
             // 消した干支の数だけ新しい干支をランダムに生成
             StartCoroutine(CreateEtos(eraseEtoList.Count));
 
@@ -503,8 +511,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator GameUp()
     {
-        // シャッフルボタンを非活性化して押せなくする
-        uiManager.ActivateShuffleButton(false);
+        // シャッフルボタンとスキルボタンを非活性化して押せなくする
+        uiManager.InActiveButtons();
 
         // gameStateをリザルトに変更する = Updateメソッドが動かなくなる
         gameState = GameState.Result;
@@ -531,5 +539,86 @@ public class GameManager : MonoBehaviour
             );
 
         yield return new WaitForSeconds(1.0f);
+    }
+
+    /// <summary>
+    /// 最も数の多い干支のタイプをまとめて削除する
+    /// </summary>
+    public void DeleteMaxEtoType()
+    {
+        // Dictionaryの宣言と定義。干支のタイプとその数を代入できるようにする
+        Dictionary<EtoType, int> dictionary = new Dictionary<EtoType, int>();
+
+        // リストの中から干支のタイプごとにDictionaryの要素を作成(ここで５つの干支タイプごとにいくつ数があるかわかる)
+        foreach (Eto eto in etoList)
+        {
+            if (dictionary.ContainsKey(eto.etoType))
+            {
+                // すでにある要素(干支のタイプ)の場合には新しく要素を作り、カウントを１する
+                dictionary[eto.etoType]++;
+            }
+            else
+            {
+                // まだ作られていない要素(干支のタイプ)の場合には新しく要素を作り、カウントを１する
+                dictionary.Add(eto.etoType, 1);
+            }
+        }
+
+        // Debug
+        foreach (KeyValuePair<EtoType, int> keyValuePair in dictionary)
+        {
+            Debug.Log("干支 : " + keyValuePair.Key + " 数 : " + keyValuePair.Value);
+        }
+
+        // Dictionaryを検索し、最も多い干支のタイプを見つけて、消す干支のタイプと数を設定
+        EtoType maxEtoType = dictionary.OrderByDescending(x => x.Value).First().Key;
+        int removeNum = dictionary.OrderByDescending(x => x.Value).First().Value;
+
+        Debug.Log("消す干支のタイプ : " + maxEtoType + " 数 : " + removeNum);
+
+        // 対象の干支を破壊
+        for (int i = 0; i < etoList.Count; i++)
+        {
+            if (etoList[i].etoType == maxEtoType)
+            {
+                Destroy(etoList[i].gameObject);
+            }
+        }
+
+        // etoListから対象の干支を削除
+        etoList.RemoveAll(x => x.etoType == maxEtoType);
+
+        // 点数と消した干支の加算
+        AddScores(maxEtoType, removeNum);
+
+        // 破壊した干支の数だけ干支を生成
+        StartCoroutine(CreateEtos(removeNum));
+    }
+
+    /// <summary>
+    /// 選択されたスキルをボタンに登録
+    /// </summary>
+    /// <param name="skillType"></param>
+    /// <returns></returns>
+    private IEnumerator SetUpSkill(SkillType skillType)
+    {
+        yield return StartCoroutine(uiManager.SetUpSkillButton(GetSkill(skillType)));
+    }
+
+    /// <summary>
+    /// スキルボタンに登録するスキルのメソッドを取得して戻す
+    /// </summary>
+    /// <param name="chooseSkillType"></param>
+    /// <returns></returns>
+    public UnityAction GetSkill(SkillType chooseSkillType)
+    {
+        switch (chooseSkillType)
+        {
+            case SkillType.DeleteMaxEtoType:
+                return DeleteMaxEtoType;
+
+                // TODO スキルが増えた場合には追加する
+        }
+        return null;
     }
 }
