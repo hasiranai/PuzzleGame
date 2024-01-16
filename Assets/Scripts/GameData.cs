@@ -92,7 +92,7 @@ public class GameData : MonoBehaviour
     /// <returns></returns>
     public IEnumerator RestartGame()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return StartCoroutine(TransitionManager.instance.FadePanel(1.0f));
 
         // 現在のゲームシーンを取得し、シーンの名前を使ってLoadScene処理を行う(再度、同じゲームシーンを呼び出す)
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

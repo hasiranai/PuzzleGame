@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Start()　　// <= ⭐︎ 戻り値を void から IEnumerator型に変更して、コルーチンメソッドにする
     {
+        StartCoroutine(TransitionManager.instance.FadePanel(0.0f));
+
         // スコアなどを初期化
         GameData.instance.InitGame();
 
