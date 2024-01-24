@@ -1572,6 +1572,65 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &616471222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616471224}
+  - component: {fileID: 616471223}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &616471223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616471222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0b2eef237fb4e1c9c22caa3236bbee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM_Volume: 0.1
+  SE_Volume: 0.2
+  Mute: 0
+  BGM_Clips:
+  - {fileID: 8300000, guid: d957a18f16a2b4b73ae8ed41d1080ab4, type: 3}
+  - {fileID: 8300000, guid: d2bd4a46cea5e4376acc73c24d063ae2, type: 3}
+  - {fileID: 8300000, guid: 3e1b5e60c568343619ae180ebc6e9de8, type: 3}
+  SE_Clips:
+  - {fileID: 8300000, guid: 3e0646c7fba944514a6e3a72f234b594, type: 3}
+  - {fileID: 8300000, guid: 0d82588c1dbf1464c9d7d7961ee24f6e, type: 3}
+  - {fileID: 8300000, guid: cbd23e09fa2c24e9bb97e074721c2ecd, type: 3}
+  - {fileID: 8300000, guid: d2fa4633e4b2644bcb070ec458ec6e80, type: 3}
+  - {fileID: 8300000, guid: c668ed1a4dd944b859b3adb71ca17aca, type: 3}
+  - {fileID: 8300000, guid: d65364138ea354c2db9da1f150445b33, type: 3}
+  audioMixer: {fileID: 0}
+--- !u!4 &616471224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616471222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26782194, y: -0.34764352, z: 1113.7631}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &690560633 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7676285430518179681, guid: 08615fa9429c7412395353a7de460539, type: 3}

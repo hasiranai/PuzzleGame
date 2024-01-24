@@ -77,6 +77,9 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     private void OnClickMovePopUp()
     {
+        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Select);
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Transition);
+
         // ボタンを非活性化してタップを感知させなくする
         btnClosePopUp.interactable = false;
 

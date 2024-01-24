@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(TransitionManager.instance.FadePanel(0.0f));
 
+        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Select);
+
         // スコアなどを初期化
         GameData.instance.InitGame();
 
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
 
         // 引数で指定した数の干支を生成する
         StartCoroutine(CreateEtos(GameData.instance.createEtoCount));
+
+        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Game);
     }
 
     /// <summary>
@@ -397,6 +401,8 @@ public class GameManager : MonoBehaviour
 
                 // 干支を削除
                 Destroy(eraseEtoList[i].gameObject);
+
+                SoundManager.instance.PlaySE(SoundManager.SE_Type.Erase);
             }
 
             // スコアと消した干支の数の加算
@@ -537,10 +543,18 @@ public class GameManager : MonoBehaviour
             {
                 // 移動完了後に、リザルト内容を表示
                 resultPopUp.DisplayResult(GameData.instance.score, GameData.instance.eraseEtoCount);
-            }
-            );
+            });
 
-        yield return new WaitForSeconds(1.0f);
+        // SEを鳴らすまでの待機時間
+        yield return new WaitForSeconds(0.5f);
+
+        // ドラムロールのSE再生
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Result);
+
+        // SEが流れ終わってBGMを切り替えるまでの待機時間
+　　　　　yield return new WaitForSeconds(2.5f);
+
+        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Result);
     }
 
     /// <summary>
