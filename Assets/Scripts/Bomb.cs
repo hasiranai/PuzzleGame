@@ -50,8 +50,11 @@ public class Bomb : MonoBehaviour
 
 
 
-        // TODO GameManager への干支の削除命令を書く
-
+        // GameManager への干支の削除命令を書く
+        if (gameManager != null)
+        {
+            gameManager.AddRangeEraseEtoList(eraseEtos);
+        }
 
         Debug.Log("ボム実行");
 
@@ -70,9 +73,9 @@ public class Bomb : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-    void Start()
-    {
+  //  void Start()
+  //  {
         // デバッグ用のテスト処理
-        SetUpBomb(null, 1.0f);
-    }
+    //    SetUpBomb(null, 1.0f);
+   // }
 }
